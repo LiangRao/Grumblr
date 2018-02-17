@@ -1,0 +1,23 @@
+{% extends "grumblr/base.html" %}
+{% load staticfiles %}
+{% block title %}<title>Login Page</title>{% endblock %}
+{% block css %}<link rel="stylesheet" type="text/css" href="{% static 'grumblr/css/login.css' %}">{% endblock %}
+{% block content %}
+	<div class="login-page">
+	  <div class="form">
+      {% if form.errors %}
+        <p>Incorrect user name and password, or your account has not been validated.</p> 
+      {% endif %}
+    	<form class="form-signin" method="post" action="{% url 'login' %}">
+        {{ form.username.label_tag}} <br>
+        {{ form.username }} <br>
+        {{ form.password.label_tag}} <br>
+        {{ form.password }} <br>
+    	  <button> Sign In </button>
+    	  <p class="message">Not registered? <a href="register">Create an account</a></p>
+        <p class="message"><a href="{% url 'password_reset' %}">Lost password?</a></p>
+        {% csrf_token %}
+    	</form>
+	  </div>
+	</div>
+{% endblock %}

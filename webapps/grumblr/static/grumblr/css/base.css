@@ -1,0 +1,63 @@
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f3ffe6;
+}
+
+.form {
+  padding: 45px;
+  border-radius: 8px;
+  position: relative;
+  background: #FFFFFF;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  overflow: hidden;
+}
+.form button {
+  background: #4CAF50;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+}
+.form .message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 14px;
+}
+.form .message a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+.navbar {
+  background: #4CAF50; 
+}
+.navbar-brand {
+  color: #FFFFFF;
+}
+.nav > li > a:hover,
+.nav > li > a:focus {
+  text-decoration: none;
+  background-color: #00cc66;
+  color: #000;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.blog-post-meta {
+  margin-bottom: 20px;
+  color: #999;
+}
+.blog-post {
+  margin-bottom: 60px;
+}
+.blog-post-title {
+  margin-bottom: 5px;
+  font-size: 40px;
+}
+.sidebar-module {
+  padding: 15px;
+  margin: 0 -15px 15px;
+}

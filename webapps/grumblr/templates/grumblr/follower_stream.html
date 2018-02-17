@@ -1,0 +1,37 @@
+{% extends "grumblr/base.html" %}
+{% load staticfiles %}
+{% block title %}<title>Global Stream Page</title>{% endblock %}
+
+{% block css %}<link rel="stylesheet" type="text/css" href="{% static 'grumblr/css/global_stream.css' %}">{% endblock %}
+{% block navbar %}
+  <div id="navbar" class="navbar-collapse collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="profile/{{user.id}}">Profile</a></li>
+      <li><a href="logout">Logout</a></li>
+    </ul>
+    <form class="navbar-form navbar-right">
+      <input type="text" class="form-control" placeholder="Search...">
+    </form>
+  </div>
+{% endblock %}
+{% block content %}
+  <div class="container">
+    <div class="col-sm-7 blog-post">
+      <li style="list-style-type: none" id="post-list"></li>
+    </div>
+
+    <div class="col-sm-5">
+      <div class="form">
+        <h5>Click a blogger's name.</h5>
+        <ul>
+          {% for blogger in bloggers %}
+            <li><a href="profile/{{blogger.id}}">{{blogger.first_name}} {{blogger.last_name}}</a>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="/static/js/follower-stream.js"></script>
+{% endblock %}

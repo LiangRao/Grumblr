@@ -1,0 +1,57 @@
+{% extends "grumblr/base.html" %}
+{% load staticfiles %}
+{% block title %}<title>Profile Page</title>{% endblock %}
+{% block css %}<link rel="stylesheet" type="text/css" href="{% static 'grumblr/css/profile.css' %}">{% endblock %}
+{% block navbar %}
+  <div id="navbar" class="navbar-collapse collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="../edit-profile">Edit Profile</a></li>
+      <li><a href="../../">Global Stream</a></li>
+      <li><a href="../../follower-stream">Follower Stream</a></li>
+      <li><a href="../logout">Logout</a></li>
+    </ul>
+    <form class="navbar-form navbar-right">
+      <input type="text" class="form-control" placeholder="Search...">
+    </form>
+  </div>
+{% endblock %}
+{% block content %}
+  <div class="container">
+    <div class="col-sm-7 blog-post">
+      {% if user.id == request_user.id %}
+        <div class="form">
+          <textarea class="form-control" type="text" placeholder="Write something..." name="post" id="new_post"></textarea>
+          <button id="post-btn">Post</button> 
+        </div>
+      {% endif %}
+
+      <li style="list-style-type: none" id="post-list"></li>
+
+    </div>
+
+    <div class="col-sm-5">
+      <div class="form self-intro" id="{{user.id}}">
+        <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+        
+        {% if user_profile.picture %}
+          <img src="{% url 'profile-picture' user.id %}">
+        {% endif %}
+
+        {% if user_profile.about %}
+          <h4>About</h4>
+          <p>{{ user_profile.about }}</p>
+        {% endif %}
+
+        {% if user_profile.age %}
+          <p>Age: {{user_profile.age}}</p>
+        {% endif %}
+        <p><a href="{% url 'follow' user.id %}">Follow</a></p>
+        <p><a href="{% url 'unfollow' user.id %}">Unfollow</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="/static/js/profile.js"></script>
+
+{% endblock %}
